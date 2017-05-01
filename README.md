@@ -1,2 +1,2 @@
 # slot-machine-simpsons
-Funny slot machine
+Funny simpsons slot machine game.
