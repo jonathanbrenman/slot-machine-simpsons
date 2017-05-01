@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="border-decoration">
+<head>
+	<link rel="shortcut icon" type="image/png" href="assets/images/homer_icon.png"/>
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<title>Simpsons Slot Machine</title>
+</head>
+<body>
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/jquery.easing.min.js"></script>
+	<script src="libs/bootstrap.min.js"></script>
+	<!-- Load Audio tracks here -->
+	<audio id="intro" src="assets/sounds/intro.mp3"></audio>
+	<audio id="yuju" src="assets/sounds/yuju.mp3"></audio>
+	<audio id="click-btn" src="assets/sounds/click.mp3"></audio>
+	<!-- Load Audio tracks here -->
+
+	<div id="box" class="text-center">
+		<div class="container">
+			<div class="col-lg-6 deco-right">
+				<img class="homero-right" src="assets/images/cover.png">
+			</div>
+			<div class="slot-header row">
+				<div class="square-box col-xs-3">
+					<label>Credits: <span>150</span></label>
+				</div>
+				<div class="square-box col-xs-3">
+					<label>Bet: <span>150</span></label>
+				</div>
+				<div class="square-box col-xs-3">
+					<label>Win: <span>150</span></label>
+				</div>
+			</div>
+			<div class="slot-body col-lg-12 row">
+				<div class="rodillo col-xs-3">
+					<div class="viewbox">
+						<div class="wrapper" id="slotmachine">
+							<ul class="slot">
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="rodillo col-xs-3">
+					<div class="viewbox">
+						<div class="wrapper" id="slotmachine">
+							<ul class="slot">
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="rodillo col-xs-3">
+					<div class="viewbox">
+						<div class="wrapper" id="slotmachine">
+							<ul class="slot">
+								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="rodillo col-xs-3">
+					<div class="viewbox">
+						<div class="wrapper" id="slotmachine">
+							<ul class="slot">
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slot-footer row">
+				<div class="btn btn-slot standart col-xs-3" data-number="1">
+					<label>10 credits</label>
+				</div>
+				<div class="btn btn-slot standart col-xs-3" data-number="2">
+					<label>25 credits</label>
+				</div>
+				<div class="btn btn-slot standart col-xs-3" data-number="3">
+					<label>50 credits</label>
+				</div>
+				<div id="spin" class="btn btn-slot col-xs-3">
+					<label>Spin</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $("#intro").get(0).play();
+			
+			$('.standart').click(function(event){
+				var current = $(event.currentTarget).attr("data-number");
+				console.log(current);
+				$("#click-btn").get(0).play();
+				$.each($('.standart'),function(index,value){
+					var number = $(value).attr("data-number");
+					if(number == current){
+						$(value).addClass('selected-button');
+					}else{
+						$(value).removeClass('selected-button');
+					}
+				});
+			});
+
+			var list = $('.wrapper>ul:first');
+		    var firstItem = list.find('li:first');
+		    firstItem.clone().appendTo(list);
+
+		    function spin(count) {
+		        $('.wrapper').stop().animate({
+		            top: -1400
+		        }, 2000, 'linear', function () {
+		            if (count == 0) {
+		                var slot = Math.floor(Math.random() * 6),
+		                    top = -slot * 200,
+		                    time =  2000 * slot / 6;
+		                $(this).css({
+		                    top: 0
+		                }).animate({
+		                    top: top
+		                },time, 'easeOutQuad')
+		            } else {
+		                $(this).css({
+		                    top: 0
+		                })
+		                spin(count - 1)
+		            };
+		        });
+
+		    }
+		    $('#spin').click(function () {
+	    		$("#yuju").get(0).play();
+		        $('.wrapper').css({
+		            top: 0
+		        }) 
+		        spin(1)
+		    });
+
+		});
+	</script>
+</body>
+</html>

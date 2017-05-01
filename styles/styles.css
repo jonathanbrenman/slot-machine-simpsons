@@ -1,0 +1,105 @@
+body{
+	min-height: 860px;
+	max-width: 800px;
+}
+.container{
+	width: 100%;
+	min-height: 500px;
+}
+.border-decoration {
+    border: 30px solid transparent;
+    padding: 15px;
+}
+.slot-footer{
+	position: absolute;
+	width: 100%;
+	bottom: 60px;
+}
+.deco-right{
+	position: absolute;
+	right: 50px;
+}
+.rodillo{
+	background: black;
+	border-radius: 20px;
+	opacity: 0.80;
+	border-right: 3px solid white;
+    overflow: hidden;
+    height: 350px;
+    position: relative;
+}
+.square-box{
+	border-radius: 20px;
+	font-family: helvetica;
+	background: black;
+	color: white;
+	opacity: 0.80;
+	padding: 5px;
+	border: 10px solid pink;
+	text-align: center;
+	margin-left: 40px;
+}
+.square-box label{
+	font-size: 12px;
+}
+.square-box span{
+	font-size: 16px;
+	color: yellow;
+}
+.slot-body{
+	margin-top: 15px;
+}
+.btn-slot{
+	color: white;
+	font-family: helvetica;
+	background: black;
+	opacity: 0.80;
+	border-radius: 20px;
+	width: 150px;
+	border: 10px solid pink;
+	margin-left: 40px;
+}
+.btn-slot:hover{
+	border: 10px solid green;
+	color: white;
+	font-family: helvetica;
+}
+.btn-slot:active{
+	border: 10px solid green;
+	color: white;
+	font-family: helvetica;
+}
+#spin:active{
+	border: 10px solid red;
+}
+.selected-button{
+	border: 10px solid green;
+	color: white;
+	font-family: helvetica;	
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+	display: block;
+	padding: 10px;
+	text-align:center;
+}
+
+.viewbox {
+    overflow: hidden;
+    border: solid 1px #000;
+    position: relative;
+}
+.viewbox .wrapper {
+    position: relative;
+}
+#box{
+	background: yellow;
+	border: 13px solid pink;
+	border-radius: 20px;
+	padding: 20px;
+	width: 900px;
+}
