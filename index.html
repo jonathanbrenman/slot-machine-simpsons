@@ -51,6 +51,22 @@
 								<li><img src="assets/images/bart1.png"></li>
 								<li><img src="assets/images/murphy.png"></li>
 								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
 							</ul>
 						</div>
 					</div>
@@ -72,6 +88,19 @@
 								<li><img src="assets/images/marsh1.png"></li>
 								<li><img src="assets/images/murphy.png"></li>
 								<li><img src="assets/images/bonus.png"></li>
+								<li><img src="assets/images/bonus.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
 							</ul>
 						</div>
 					</div>
@@ -87,6 +116,19 @@
 								<li><img src="assets/images/lisa1.png"></li>
 								<li><img src="assets/images/ayudante.png"></li>
 								<li><img src="assets/images/bonus.png"></li>
+								<li><img src="assets/images/bonus.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
+								<li><img src="assets/images/ayudante.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/homero2.png"></li>
+								<li><img src="assets/images/lisa1.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
 								<li><img src="assets/images/marsh1.png"></li>
 								<li><img src="assets/images/bola1.png"></li>
 								<li><img src="assets/images/milhouse.png"></li>
@@ -113,6 +155,18 @@
 								<li><img src="assets/images/bola1.png"></li>
 								<li><img src="assets/images/Abraham_Simpson.png"></li>
 								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/maggie1.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/murphy.png"></li>
+								<li><img src="assets/images/patyselma.png"></li>
+								<li><img src="assets/images/marsh1.png"></li>
+								<li><img src="assets/images/bola1.png"></li>
+								<li><img src="assets/images/milhouse.png"></li>
+								<li><img src="assets/images/homer1.png"></li>
+								<li><img src="assets/images/bart1.png"></li>
+								<li><img src="assets/images/Abraham_Simpson.png"></li>
 							</ul>
 						</div>
 					</div>
@@ -157,34 +211,37 @@
 		    firstItem.clone().appendTo(list);
 
 		    function spin(count) {
-		        $('.wrapper').stop().animate({
-		            top: -1400
-		        }, 2000, 'linear', function () {
-		            if (count == 0) {
-		                var slot = Math.floor(Math.random() * 6),
-		                    top = -slot * 200,
-		                    time =  1200 * slot / 6;
-		                $(this).css({
-		                    top: 0
-		                }).animate({
-		                    top: top
-		                },time, 'easeOutQuad')
-		            } else {
-		                $(this).css({
-		                    top: 0
-		                })
-		                spin(count - 1)
-		            };
-		        });
-
+		    	$.each($('.wrapper'),function(index,value){
+			        $(value).stop().animate({
+			            top: -1200
+			        }, 2000, 'linear', function () {
+			            if (count == 0) {
+			                var slot = Math.floor(Math.random() * 10),
+			                    top = -slot * 200,
+			                    time =  1200 * slot / 12;
+			                $(this).css({
+			                    top: 0
+			                }).animate({
+			                    top: top
+			                },time, 'easeOutQuad')
+			            } else {
+			                $(this).css({
+			                    top: 0
+			                })
+			                spin(count - 1)
+			            };
+			        });
+			    });
 		    }
 		    $('#spin').click(function () {
 	    		$("#yuju").get(0).play();
 	    		$("#spinning").get(0).play();
-		        $('.wrapper').css({
-		            top: 0
-		        }) 
-		        spin(1)
+	    		$.each($('.wrapper'),function(index,value){
+			        $(value).css({
+			            top: 0
+			        }) 
+	    		});
+		        spin(3)
 		    });
 
 		});
