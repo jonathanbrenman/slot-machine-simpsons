@@ -1,2 +1,6 @@
 # slot-machine-simpsons
-Funny slot machine
+Funny simpsons slot machine game in progress!
+
+ Load index.html with some webserver and play
+
+![alt text](https://github.com/jonathanbrenman/slot-machine-simpsons/blob/master/assets/images/slot.png)
