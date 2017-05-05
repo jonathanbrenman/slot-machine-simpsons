@@ -103,3 +103,18 @@ li{
 	padding: 20px;
 	width: 900px;
 }
+#debug{
+	position: absolute;
+	top: 100px;
+	right: 120px;
+}
+#insert-credits{
+	margin-top: 60px;
+}
+#credits{
+	width: 200px;
+	border: 10px solid pink;
+	border-radius: 20px;
+	text-align: center;
+	font-family: helvetica;
+}

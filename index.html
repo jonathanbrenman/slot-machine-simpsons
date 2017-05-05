@@ -24,13 +24,13 @@
 			</div>
 			<div class="slot-header row">
 				<div class="square-box col-xs-3">
-					<label>Credits: <span>150</span></label>
+					<label>Credits: <span id="credits-show">0</span></label>
 				</div>
 				<div class="square-box col-xs-3">
-					<label>Bet: <span>150</span></label>
+					<label>Bet: <span id="bet">50</span></label>
 				</div>
 				<div class="square-box col-xs-3">
-					<label>Win: <span>150</span></label>
+					<label>Win: <span>0</span></label>
 				</div>
 			</div>
 			<div class="slot-body col-lg-12 row">
@@ -173,33 +173,55 @@
 				</div>
 			</div>
 			<div class="slot-footer row">
-				<div class="btn btn-slot standart col-xs-3" data-number="1">
+				<div class="btn btn-slot standart col-xs-3" data-number="1" data-coins="10">
 					<label>10 credits</label>
 				</div>
-				<div class="btn btn-slot standart col-xs-3" data-number="2">
+				<div class="btn btn-slot standart col-xs-3" data-number="2" data-coins="25">
 					<label>25 credits</label>
 				</div>
-				<div class="btn btn-slot standart col-xs-3" data-number="3">
+				<div class="btn btn-slot standart selected-button col-xs-3" data-number="3" data-coins="50">
 					<label>50 credits</label>
 				</div>
-				<div id="spin" class="btn btn-slot col-xs-3">
+				<div id="spin" class="btn btn-slot col-xs-3" disabled>
 					<label>Spin</label>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div id="insert-credits">
+		<input id="credits" type="number" min="0" max="10000" placeholder="Insert credits..." name="insert-credits">
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		    $("#intro").get(0).play();
-			
+
+		    $('#credits').change(function(){
+		    	$('#credits-show').text($('#credits').val());
+		    });
+
+		    function validation() {
+				var my_credits = parseInt($('#credits-show').text());
+				var bets       = parseInt($('#bet').text());
+				console.log(my_credits,bets);
+				if(my_credits <= 0 || (my_credits - bets) < 0){
+					$('#spin').attr('disabled', true);
+				}else{
+					$('#spin').attr('disabled', false);
+				}
+		    }
+
+			$('#credits').change(function(){
+				validation();
+			});
+
 			$('.standart').click(function(event){
 				var current = $(event.currentTarget).attr("data-number");
-				console.log(current);
 				$("#click-btn").get(0).play();
 				$.each($('.standart'),function(index,value){
 					var number = $(value).attr("data-number");
 					if(number == current){
 						$(value).addClass('selected-button');
+						$('#bet').text($(value).attr("data-coins"));
 					}else{
 						$(value).removeClass('selected-button');
 					}
@@ -234,14 +256,21 @@
 			    });
 		    }
 		    $('#spin').click(function () {
-	    		$("#yuju").get(0).play();
-	    		$("#spinning").get(0).play();
-	    		$.each($('.wrapper'),function(index,value){
-			        $(value).css({
-			            top: 0
-			        }) 
-	    		});
-		        spin(3)
+		    	if(!$('#spin').attr('disabled')){
+			    	var my_credits = parseInt($('#credits-show').text());
+			    	var bets       = parseInt($('#bet').text());
+			    	$('#credits-show').text(my_credits - bets);
+			    	$('#credits').val(my_credits - bets);		    		
+			    	validation();
+		    		$("#yuju").get(0).play();
+		    		$("#spinning").get(0).play();
+		    		$.each($('.wrapper'),function(index,value){
+				        $(value).css({
+				            top: 0
+				        }); 
+		    		});
+			        spin(3);
+		    	}
 		    });
 
 		});
