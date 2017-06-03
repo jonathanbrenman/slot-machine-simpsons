@@ -9,6 +9,7 @@
 <body>
 	<script src="libs/jquery.min.js"></script>
 	<script src="libs/jquery.easing.min.js"></script>
+	<script src="libs/jSlot.min.js"></script>
 	<script src="libs/bootstrap.min.js"></script>
 	<!-- Load Audio tracks here -->
 	<audio id="intro" src="assets/sounds/intro.mp3"></audio>
@@ -185,6 +186,7 @@
 				<div id="spin" class="btn btn-slot col-xs-3" disabled>
 					<label>Spin</label>
 				</div>
+				<button id="spinTrigger" hidden></button>
 			</div>
 		</div>
 	</div>
@@ -228,35 +230,10 @@
 				});
 			});
 
-			var list = $('.wrapper>ul:first');
-		    var firstItem = list.find('li:first');
-		    firstItem.clone().appendTo(list);
-
-		    function spin(count) {
-		    	$.each($('.wrapper'),function(index,value){
-			        $(value).stop().animate({
-			            top: -1200
-			        }, 2000, 'linear', function () {
-			            if (count == 0) {
-			                var slot = Math.floor(Math.random() * 10),
-			                    top = -slot * 200,
-			                    time =  1200 * slot / 12;
-			                $(this).css({
-			                    top: 0
-			                }).animate({
-			                    top: top
-			                },time, 'easeOutQuad')
-			            } else {
-			                $(this).css({
-			                    top: 0
-			                })
-			                spin(count - 1)
-			            };
-			        });
-			    });
-		    }
+	
 		    $('#spin').click(function () {
 		    	if(!$('#spin').attr('disabled')){
+		    		$('#spinTrigger').click();
 			    	var my_credits = parseInt($('#credits-show').text());
 			    	var bets       = parseInt($('#bet').text());
 			    	$('#credits-show').text(my_credits - bets);
@@ -269,8 +246,10 @@
 				            top: 0
 				        }); 
 		    		});
-			        spin(3);
 		    	}
+		    });
+		    $('.slot').jSlots({
+		        spinner : '#spinTrigger'
 		    });
 
 		});
