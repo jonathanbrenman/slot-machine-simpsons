@@ -230,10 +230,14 @@
 				});
 			});
 
+			function allowSpinner(){
+				$('#spin').attr('disabled', false);
+			}
 	
 		    $('#spin').click(function () {
 		    	if(!$('#spin').attr('disabled')){
 		    		$('#spinTrigger').click();
+		    		$('#spin').attr('disabled', true);
 			    	var my_credits = parseInt($('#credits-show').text());
 			    	var bets       = parseInt($('#bet').text());
 			    	$('#credits-show').text(my_credits - bets);
@@ -241,15 +245,11 @@
 			    	validation();
 		    		$("#yuju").get(0).play();
 		    		$("#spinning").get(0).play();
-		    		$.each($('.wrapper'),function(index,value){
-				        $(value).css({
-				            top: 0
-				        }); 
-		    		});
 		    	}
 		    });
 		    $('.slot').jSlots({
-		        spinner : '#spinTrigger'
+		        spinner : '#spinTrigger',
+    			onEnd : allowSpinner,
 		    });
 
 		});
